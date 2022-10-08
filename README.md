@@ -10,6 +10,8 @@
   <p align="center">
     💉 Injectable <a href="https://onesignal.com/">OneSignal</a> client for <a href="https://nestjs.com/">NestJS</a>.
   </p>
+
+  [![codecov](https://codecov.io/gh/mughieams/nestjs-onesignal/branch/main/graph/badge.svg?token=SacfYAwyeP)](https://codecov.io/gh/mughieams/nestjs-onesignal) [![npm version](https://img.shields.io/npm/v/nestjs-onesignal)](https://www.npmjs.com/package/nestjs-onesignal) [![miniziped size](https://badgen.net/bundlephobia/minzip/nestjs-onesignal)](https://bundlephobia.com/result?p=nestjs-onesignal) [![MIT licensed](https://img.shields.io/github/license/mughieams/nestjs-onesignal)](https://raw.githubusercontent.com/mughieams/nestjs-onesignal/main/LICENSE)
 </p>
 
 Implementing the `OneSignalModule` from this package you gain access to OneSignal client through dependency injection with minimal setup.
