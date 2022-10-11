@@ -36,8 +36,8 @@ import { OneSignalModule } from 'nestjs-onesignal';
 @Module({
     imports: [
         OneSignalModule.forRoot({
-            appKey: process.env.ONESIGNAL_APP_KEY,
-            userKey: process.env.ONESIGNAL_USER_KEY,
+            appId: process.env.ONESIGNAL_APP_ID,
+            apiKey: process.env.ONESIGNAL_API_KEY,
         }),
     ],
 })
@@ -54,8 +54,8 @@ import { OneSignalModule } from 'nestjs-onesignal';
         OneSignalModule.forRootAsync({
             imports: [ConfigModule],
             useFactory: (configService: ConfigService) => ({
-                appKey: configService.get('ONESIGNAL_APP_KEY'),
-                userKey: configService.get('ONESIGNAL_USER_KEY'),
+                appId: configService.get('ONESIGNAL_APP_ID'),
+                apiKey: configService.get('ONESIGNAL_API_KEY'),
             }),
             inject: [ConfigService],
         }),
@@ -77,12 +77,9 @@ export class AppService {
     ) {}
     
     async sendNotification() {
-        const appId = this.configService.get(ONESIGNAL_APP_ID);
-        const playerId = this.configService.get(ONESIGNAL_APP_ID);
-        const onesignalApp = await this.onesignalService.client.getApp(appId);
+        const playerId = this.configService.get(ONESIGNAL_PLAYER_ID);
         
         return await this.onesignalService.client.createNotification({
-            app_id: onesignalApp.id,
             contents: {
                 en: 'Sent notification to spesific player id',
             },
