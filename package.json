@@ -1,6 +1,6 @@
 {
   "name": "nestjs-onesignal",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Injectable OneSignal client for NestJS",
   "license": "MIT",
   "author": {
