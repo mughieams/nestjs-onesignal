@@ -4,31 +4,24 @@ import { OneSignalModule, OneSignalService } from '../module';
 
 import { OPTIONS_TYPE } from '../utils';
 
-import * as OneSignal from '@onesignal/node-onesignal';
-
 describe('OneSignalModule', () => {
-  const {
-    ONESIGNAL_APP_KEY,
-    ONESIGNAL_USER_KEY,
-    ONESIGNAL_APP_ID,
-    ONESIGNAL_PLAYER_ID,
-  } = process.env;
+  const { ONESIGNAL_API_KEY, ONESIGNAL_APP_ID, ONESIGNAL_PLAYER_ID } =
+    process.env;
 
-  if (!ONESIGNAL_APP_KEY)
+  if (!ONESIGNAL_API_KEY)
     throw new Error('No OneSignal app key defined in `.env`!');
-  if (!ONESIGNAL_USER_KEY)
-    throw new Error('No OneSignal user key defined in `.env`!');
-  if (!ONESIGNAL_APP_ID || !ONESIGNAL_PLAYER_ID)
-    throw new Error('No testing app id and player id defined in `.env`!');
+  if (!ONESIGNAL_APP_ID)
+    throw new Error('No OneSignal app id defined in `.env`!');
+  if (!ONESIGNAL_PLAYER_ID)
+    throw new Error('No testing player id defined in `.env`!');
 
   const config: typeof OPTIONS_TYPE = {
-    appKey: ONESIGNAL_APP_KEY,
-    userKey: ONESIGNAL_USER_KEY,
+    appId: ONESIGNAL_APP_ID,
+    apiKey: ONESIGNAL_API_KEY,
   };
 
   describe('forRoot', () => {
     let onesignalService: OneSignalService;
-    let onesignalApp: OneSignal.App;
 
     beforeEach(async () => {
       const module = await Test.createTestingModule({
@@ -36,7 +29,6 @@ describe('OneSignalModule', () => {
       }).compile();
 
       onesignalService = module.get(OneSignalService);
-      onesignalApp = await onesignalService.client.getApp(ONESIGNAL_APP_ID);
     });
 
     it('should provide client', () => {
@@ -45,7 +37,6 @@ describe('OneSignalModule', () => {
 
     it('should send a test notification to the one signal app id defined in env', async () => {
       const response = await onesignalService.client.createNotification({
-        app_id: onesignalApp.id,
         contents: {
           en: 'Automated testing of https://www.github.com/mughieams/nestjs-onesignal forRoot',
         },
@@ -58,7 +49,6 @@ describe('OneSignalModule', () => {
 
   describe('forRootAsync with useFactory', () => {
     let onesignalService: OneSignalService;
-    let onesignalApp: OneSignal.App;
 
     beforeEach(async () => {
       const module = await Test.createTestingModule({
@@ -70,7 +60,6 @@ describe('OneSignalModule', () => {
       }).compile();
 
       onesignalService = module.get(OneSignalService);
-      onesignalApp = await onesignalService.client.getApp(ONESIGNAL_APP_ID);
     });
 
     it('should provide client', () => {
@@ -79,7 +68,6 @@ describe('OneSignalModule', () => {
 
     it('should send a test notification to the one signal app id defined in env', async () => {
       const response = await onesignalService.client.createNotification({
-        app_id: onesignalApp.id,
         contents: {
           en: 'Automated testing of https://www.github.com/mughieams/nestjs-onesignal forRootAsync with useFactory',
         },

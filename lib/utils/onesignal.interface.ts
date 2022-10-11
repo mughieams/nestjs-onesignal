@@ -1,8 +1,8 @@
-import * as OneSignal from '@onesignal/node-onesignal';
+import * as OneSignal from 'onesignal-node';
 
-export type OneSignalClient = OneSignal.DefaultApi;
+export type OneSignalClient = OneSignal.Client;
 
 export interface OneSignalModuleOptions {
-  userKey: Promise<string> | string;
-  appKey: Promise<string> | string;
+  appId: string;
+  apiKey: string;
 }
