@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 require('dotenv').config();
 
 const { ONESIGNAL_API_KEY, ONESIGNAL_APP_ID } = process.env;
