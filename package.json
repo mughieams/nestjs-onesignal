@@ -34,7 +34,7 @@
     "test:watch": "yarn test:run --watch",
     "test:coverage": "yarn clean:test && yarn test:run --coverage",
     "type-check": "tsc --noEmit",
-    "lint": "eslint --fix . --ext .js,.ts,.tsx",
+    "lint": "eslint --fix . -c eslint.config.js",
     "clean:dist": "rimraf dist",
     "clean:test": "rimraf coverage",
     "prepare": "yarn build:dist",
