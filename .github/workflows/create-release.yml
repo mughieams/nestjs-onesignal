@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js 16.x
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - name: Set up Node.js 22.x
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: 22
           registry-url: 'https://registry.npmjs.org'
       # This step provides me the information about package (version) from package.json.
       - name: Grant access to bash scripts
