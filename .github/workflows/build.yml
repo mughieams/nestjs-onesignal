@@ -34,7 +34,7 @@ jobs:
       - name: Running test coverage
         run: yarn test:coverage
         env:
-          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_APP_KEY }}
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
           ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
           ONESIGNAL_PLAYER_ID: ${{ secrets.ONESIGNAL_PLAYER_ID }}
       - name: Building dist
