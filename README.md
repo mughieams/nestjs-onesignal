@@ -67,7 +67,7 @@ export class AppModule {}
 Example usage in service.
 
 ```typescript
-import { OneSignalService } from 'nestjs-twilio';
+import { OneSignalService } from 'nestjs-onesignal';
 
 @Injectable()
 export class AppService {
@@ -75,10 +75,10 @@ export class AppService {
         private readonly onesignalService: OneSignalService,
         private readonly configService: ConfigService,
     ) {}
-    
+
     async sendNotification() {
         const playerId = this.configService.get(ONESIGNAL_PLAYER_ID);
-        
+
         return await this.onesignalService.client.createNotification({
             contents: {
                 en: 'Sent notification to spesific player id',
